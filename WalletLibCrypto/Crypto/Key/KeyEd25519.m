@@ -108,6 +108,36 @@
 }
 
 
+- (NSData *)publicKeyED25519 {
+    
+    static const size_t keyLen = 32;
+    unsigned char data[keyLen];
+    
+    switch (_type) {
+        case Public:
+            
+            return _key;
+            
+        case Private:
+            
+            memset(data, 0, keyLen);
+            
+            size_t len = 32;
+            
+            EVP_PKEY *k = EVP_PKEY_new_raw_private_key(EVP_PKEY_ED25519, NULL ,[_key bytes], [_key length]);
+            
+            EVP_PKEY_get_raw_public_key(k, data, &len);
+            
+            EVP_PKEY_free(k);
+            
+            NSMutableData *output = [NSMutableData dataWithBytes:data length:len];
+            
+            return output;
+            
+    }
+}
+
+
 @end
 
 
