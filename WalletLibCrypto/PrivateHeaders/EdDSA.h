@@ -14,6 +14,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
++ (nonnull NSData *)sign:(NSData *)message key:(NSData *)key;
+
+
 + (nonnull NSData *)sign:(NSData *)message donnaKey:(NSData *)key;
 
 

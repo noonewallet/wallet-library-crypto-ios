@@ -7,10 +7,37 @@
 #import <Foundation/Foundation.h>
 #import <EdDSA.h>
 
+#include "openssl/evp.h"
 #include "ed25519.h"
 
 
 @implementation EdDSA
+
+
++ (nonnull NSData *)sign:(NSData *)message key:(NSData *)key {
+    
+    EVP_PKEY *ed_key = EVP_PKEY_new_raw_private_key(EVP_PKEY_ED25519, NULL ,[key bytes], [key length]);
+    
+    size_t sig_len = 0;
+    unsigned char sig[EVP_MAX_MD_SIZE];
+    
+    const unsigned char *msg = [message bytes];
+    size_t msg_len = [message length];
+    
+    EVP_MD_CTX *md_ctx = EVP_MD_CTX_new();
+    
+    EVP_DigestSignInit(md_ctx, NULL, EVP_sha256(), NULL, ed_key);
+
+    /* Calculate the required size for the signature by passing a NULL buffer. */
+    EVP_DigestSign(md_ctx, NULL, &sig_len, msg, msg_len);
+
+    EVP_DigestSign(md_ctx, sig, &sig_len, msg, msg_len);
+
+    EVP_MD_CTX_free(md_ctx);
+        
+    return [NSData dataWithBytes:sig length:sig_len];
+    
+}
 
 
 + (nonnull NSData *)sign:(NSData *)message donnaKey:(NSData *)key {
