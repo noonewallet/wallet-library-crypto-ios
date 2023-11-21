@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (nonnull NSData *)sign:(NSData *)message donnaKey:(NSData *)key;
 
 
++ (BOOL)validateSignature:(NSData *)signature message:(NSData *)message forPublicKey:(NSData *)key;
+
+
 + (BOOL)validateDonnaSignature:(NSData *)signature message:(NSData *)message forPublicKey:(NSData *)key;
 
 
