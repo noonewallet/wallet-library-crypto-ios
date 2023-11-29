@@ -35,6 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSData *)publicKeyED25519;
 
 
++ (BOOL)isOnCurveTweetNaclED25519:(NSData *)key;
+
+
 @end
 
 

@@ -15,6 +15,8 @@
 #include "ed25519.h"
 #include "sign.h"
 
+#include "TweetNacl.h"
+
 
 @interface KeyEd25519 ()
 
@@ -135,6 +137,24 @@
             return output;
             
     }
+}
+
++ (BOOL)isOnCurveTweetNaclED25519:(NSData *)key {
+    
+    unsigned char *pubkey = (unsigned char *)[key bytes];
+    
+    int result = is_on_curve(pubkey);
+    
+    if (result == 1) {
+        
+        return YES;
+        
+    } else {
+        
+        return NO;
+        
+    }
+    
 }
 
 
