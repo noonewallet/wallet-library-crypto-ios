@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		759435AF2B1796A200895099 /* TweetNacl.c in Sources */ = {isa = PBXBuildFile; fileRef = 759435AE2B1796A200895099 /* TweetNacl.c */; };
+		759435B02B1797AD00895099 /* TweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = 759435AD2B17968700895099 /* TweetNacl.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		75A13142296C4AAA00DCBD5A /* WalletLibCrypto.docc in Sources */ = {isa = PBXBuildFile; fileRef = 75A13141296C4AAA00DCBD5A /* WalletLibCrypto.docc */; };
 		75A13148296C4AAA00DCBD5A /* WalletLibCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A1313D296C4AAA00DCBD5A /* WalletLibCrypto.framework */; };
 		75A1314E296C4AAA00DCBD5A /* WalletLibCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 75A13140296C4AAA00DCBD5A /* WalletLibCrypto.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -208,6 +210,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		759435AD2B17968700895099 /* TweetNacl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetNacl.h; sourceTree = "<group>"; };
+		759435AE2B1796A200895099 /* TweetNacl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TweetNacl.c; sourceTree = "<group>"; };
 		75A1313D296C4AAA00DCBD5A /* WalletLibCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WalletLibCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A13140296C4AAA00DCBD5A /* WalletLibCrypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletLibCrypto.h; sourceTree = "<group>"; };
 		75A13141296C4AAA00DCBD5A /* WalletLibCrypto.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = WalletLibCrypto.docc; sourceTree = "<group>"; };
@@ -503,6 +507,7 @@
 				75A13160296C576C00DCBD5A /* HexConverter.h */,
 				75AAF217296D952E00FDC626 /* KeyEd25519.h */,
 				75AAF21B296D997700FDC626 /* KeyType.h */,
+				759435AD2B17968700895099 /* TweetNacl.h */,
 			);
 			path = PrivateHeaders;
 			sourceTree = "<group>";
@@ -697,6 +702,7 @@
 			isa = PBXGroup;
 			children = (
 				75AAF1D3296C745E00FDC626 /* EdDSA.m */,
+				759435AE2B1796A200895099 /* TweetNacl.c */,
 			);
 			path = EdDSA;
 			sourceTree = "<group>";
@@ -1044,6 +1050,7 @@
 				75A132EC296C5BFA00DCBD5A /* cterr.h in Headers */,
 				75A13312296C5BFA00DCBD5A /* ecerr.h in Headers */,
 				75A132EB296C5BFA00DCBD5A /* comperr.h in Headers */,
+				759435B02B1797AD00895099 /* TweetNacl.h in Headers */,
 				75A132CE296C5BFA00DCBD5A /* blowfish.h in Headers */,
 				75A13306296C5BFA00DCBD5A /* aes.h in Headers */,
 				75A13301296C5BFA00DCBD5A /* dherr.h in Headers */,
@@ -1181,6 +1188,7 @@
 				75AAF20C296D7DEA00FDC626 /* KeySecp256k1.m in Sources */,
 				75AAF255296DD40A00FDC626 /* SignatureEdDSA.swift in Sources */,
 				75AAF234296DADBD00FDC626 /* String+Components.swift in Sources */,
+				759435AF2B1796A200895099 /* TweetNacl.c in Sources */,
 				75AAF31E296EFFC600FDC626 /* Data+Type.swift in Sources */,
 				75AAF211296D905900FDC626 /* Base58.m in Sources */,
 			);
@@ -1249,6 +1257,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;

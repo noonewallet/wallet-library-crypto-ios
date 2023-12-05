@@ -7,10 +7,49 @@
 #import <Foundation/Foundation.h>
 #import <EdDSA.h>
 
+#include "openssl/evp.h"
 #include "ed25519.h"
 
 
 @implementation EdDSA
+
+
++ (nonnull NSData *)sign:(NSData *)message key:(NSData *)key {
+    
+    EVP_PKEY *pkey = EVP_PKEY_new_raw_private_key(EVP_PKEY_ED25519, NULL ,[key bytes], [key length]);
+    
+    size_t sig_len = 0;
+    unsigned char sig[EVP_MAX_MD_SIZE];
+    
+    const unsigned char *msg = [message bytes];
+    size_t msg_len = [message length];
+    
+    EVP_MD_CTX *md_ctx = EVP_MD_CTX_new();
+    
+    int err = 0;
+    
+    if (!EVP_DigestSignInit(md_ctx, NULL, NULL, NULL, pkey) ||
+        !EVP_DigestSign(md_ctx, NULL, &sig_len, msg, msg_len) ||
+        !EVP_DigestSign(md_ctx, sig, &sig_len, msg, msg_len)) {
+        
+        err = 1;
+        
+    }
+
+    EVP_MD_CTX_free(md_ctx);
+    EVP_PKEY_free(pkey);
+    
+    if (err) {
+        
+        return [NSData data];
+        
+    } else {
+        
+        return [NSData dataWithBytes:sig length:sig_len];
+        
+    }
+         
+}
 
 
 + (nonnull NSData *)sign:(NSData *)message donnaKey:(NSData *)key {
@@ -30,6 +69,46 @@
     NSData *result = [NSData dataWithBytes:sig length:sigLen];
 
     return result;
+}
+
+
++ (BOOL)validateSignature:(NSData *)signature message:(NSData *)message forPublicKey:(NSData *)key {
+
+    const unsigned char *sig = (unsigned char *)[signature bytes];
+    size_t sig_len = [signature length];
+    
+    const unsigned char *msg = (unsigned char *)[message bytes];
+    size_t msg_len = [message length];
+    
+    const unsigned char *pubkey = (unsigned char *)[key bytes];
+    size_t pubkey_len = [key length];
+    
+    EVP_MD_CTX *md_ctx = EVP_MD_CTX_new();
+    
+    EVP_PKEY *pkey = EVP_PKEY_new_raw_public_key(EVP_PKEY_ED25519, NULL, pubkey, pubkey_len);
+    
+    int err = 0;
+    
+    if (!EVP_DigestVerifyInit(md_ctx, NULL, NULL, NULL, pkey) ||
+        !EVP_DigestVerify(md_ctx, sig, sig_len, msg, msg_len)) {
+        
+        err = 1;
+        
+    }
+    
+    EVP_MD_CTX_free(md_ctx);
+    EVP_PKEY_free(pkey);
+
+    if (err == 1) {
+
+        return NO;
+
+    } else {
+
+        return YES;
+        
+    }
+    
 }
 
 
