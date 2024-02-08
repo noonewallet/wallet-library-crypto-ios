@@ -37,7 +37,7 @@ final class ECDSATest: XCTestCase {
 
                 XCTAssertFalse(signature != expectedSignature, "Wrong signature \n\(signature.hex)\n\(expectedSignature.hex)")
                 XCTAssertFalse(id != testData.expectedRecId, "Wrong rec id")
-                XCTAssertFalse(!SignatureECDSA.validate(signature: signature, data: hash, for: privateKey, type: .Compact), "Validation failure")
+                XCTAssertFalse(!SignatureECDSA.validate(signature: signature, data: hash, for: KeySecp256k1(privateKey: privateKey).publicKeyCompressed(.CompressedConversion), type: .Compact), "Validation failure")
 
                 if let pubkey = SignatureECDSA.recoveryPublicKey(from: signature, hash: hash, compression: .Compressed) {
                     XCTAssertFalse(pubkey.hex != testData.recoveredPublickKey, "Wrong recovered public key")
@@ -61,7 +61,7 @@ final class ECDSATest: XCTestCase {
                                "Wrong signature \n\(signature.hex)\n\(expectedSignature.hex) \n message \(testData.hash) key \(testData.key)")
                 
                 XCTAssertFalse(id != testData.expectedRecId, "Wrong rec id")
-                XCTAssertFalse(!SignatureECDSA.validate(signature: signature, data: hash, for: privateKey, type: .Compact), "Validation failure")
+                XCTAssertFalse(!SignatureECDSA.validate(signature: signature, data: hash, for: KeySecp256k1(privateKey: privateKey).publicKeyCompressed(.CompressedConversion), type: .Compact), "Validation failure")
 
                 if let pubkey = SignatureECDSA.recoveryPublicKey(from: signature, hash: hash, compression: .Compressed) {
                     XCTAssertFalse(pubkey.hex != testData.recoveredPublickKey, "Wrong recovered public key")

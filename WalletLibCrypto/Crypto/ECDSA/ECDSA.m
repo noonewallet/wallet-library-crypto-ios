@@ -81,7 +81,7 @@
     
     NSData * recoveredPubKey = [self recoveryPublicKeySignature:compactSignature hash:hash compression:Compressed];
     
-    if (recoveredPubKey) {
+    if ([key isEqualToData:recoveredPubKey]) {
         
         return YES;
         
