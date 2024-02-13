@@ -32,7 +32,9 @@ public struct SignatureECDSA {
         switch type {
         case .Compact:
             
-            return ECDSA.validateCompactSignature(signature, hash: data, forPublicKey: key)
+            let publicKey = KeySecp256k1(privateKey: key).publicKeyCompressed(.CompressedConversion)
+            
+            return ECDSA.validateCompactSignature(signature, hash: data, forPublicKey: publicKey)
             
         case .DER:
             
