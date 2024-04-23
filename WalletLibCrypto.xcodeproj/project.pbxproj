@@ -197,6 +197,7 @@
 		75AAF31E296EFFC600FDC626 /* Data+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF31D296EFFC600FDC626 /* Data+Type.swift */; };
 		75AAF32B296F10A900FDC626 /* String+Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF32A296F10A900FDC626 /* String+Base58.swift */; };
 		75AAF32D296F114A00FDC626 /* Data+Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF32C296F114A00FDC626 /* Data+Base58.swift */; };
+		D53EB7D22BD7DDA000AD6E5A /* Base58RippleTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53EB7D12BD7DDA000AD6E5A /* Base58RippleTestData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -402,6 +403,7 @@
 		75AAF32A296F10A900FDC626 /* String+Base58.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Base58.swift"; sourceTree = "<group>"; };
 		75AAF32C296F114A00FDC626 /* Data+Base58.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Base58.swift"; sourceTree = "<group>"; };
 		75F7F27C296C629600DBD91A /* WalletLibCrypto.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = WalletLibCrypto.modulemap; sourceTree = "<group>"; };
+		D53EB7D12BD7DDA000AD6E5A /* Base58RippleTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58RippleTestData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -866,6 +868,7 @@
 			children = (
 				75AAF244296DC8C600FDC626 /* Base58Test.swift */,
 				75AAF248296DC9BB00FDC626 /* Base58testExpected.swift */,
+				D53EB7D12BD7DDA000AD6E5A /* Base58RippleTestData.swift */,
 			);
 			path = Encoding;
 			sourceTree = "<group>";
@@ -1199,6 +1202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75AAF226296DA9DF00FDC626 /* KeySecp256k1TestVector.swift in Sources */,
+				D53EB7D22BD7DDA000AD6E5A /* Base58RippleTestData.swift in Sources */,
 				75AAF224296DA91900FDC626 /* TestData.swift in Sources */,
 				75AAF24E296DCA5100FDC626 /* ECDSATest.swift in Sources */,
 				75AAF23E296DC1F800FDC626 /* HDDerivationTest.swift in Sources */,

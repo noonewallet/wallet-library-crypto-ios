@@ -31,6 +31,56 @@ final class Base58Test: XCTestCase {
         }
         
     }
+    
+    func testBase58RippleEncodeSuccess() {
+        
+        for (hex, data) in base58RippleValidTestData {
+            
+            autoreleasepool(invoking: {
+                
+                let message = Data(hex: hex)
+                
+                let base58encoded = Base58.encode(message, type: .ripple)
+                
+                XCTAssertFalse(base58encoded != data, "Base58 encoding error. Result: \(base58encoded), Expected: \(data)")
+                
+            })
+            
+        }
+        
+    }
+    
+    func testBase58RippleDecodeSuccess() {
+        
+        for (hex, data) in base58RippleValidTestData {
+            
+            autoreleasepool(invoking: {
+                
+                let base58decoded = Base58.decode(data, type: .ripple)
+
+                XCTAssertFalse(base58decoded.hex != hex, "Base58 decoding error. Result: \(base58decoded.hex), Expected: \(hex)")
+                
+            })
+            
+        }
+        
+    }
+    
+    func testBase58RippleDecodeFailure() {
+        
+        for data in base58RippleInvalidTestData {
+            
+            autoreleasepool(invoking: {
+                
+                let base58decoded = Base58.decode(data, type: .ripple)
+
+                XCTAssertFalse(!base58decoded.isEmpty, "Base58 decoding error. Result: \(base58decoded.hex), Expected: empty")
+                
+            })
+            
+        }
+        
+    }
 }
 
 
