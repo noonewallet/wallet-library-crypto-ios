@@ -14,10 +14,19 @@
 @implementation Base58
 
 
-static const char *BASE_58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+static const char* const BTC_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+
+static const char* const RIPPLE_ALPHABET = "rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz";
 
 
-+ (NSString *)encodeUsedChecksum:(nonnull NSData *)data {
++ (nonnull NSString *)encodeUsedChecksum:(nonnull NSData *)data {
+    
+    return [self encodeUsedChecksum: data type: btc];
+    
+}
+
+
++ (nonnull NSString *)encodeUsedChecksum:(nonnull NSData *)data type:(Base58EncodingType)type {
     
     NSMutableData *mdata = [NSMutableData dataWithData:data];
     
@@ -34,13 +43,21 @@ static const char *BASE_58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefgh
     NSData *checksum = [NSData dataWithBytes:_hash2 length:4];
     [mdata appendData:checksum];
     
-    return [self encode:mdata];
+    return [self encode:mdata type:type];
+    
 }
 
 
-+ (NSData *)decodeUsedChecksum:(nonnull NSString *)string {
++ (nonnull NSData *)decodeUsedChecksum:(nonnull NSString *)string {
     
-    NSMutableData *output =  [NSMutableData dataWithData:[self decode:string]];
+    return [self decodeUsedChecksum: string type: btc];
+    
+}
+
+
++ (nonnull NSData *)decodeUsedChecksum:(nonnull NSString *)string type:(Base58EncodingType)type {
+    
+    NSMutableData *output =  [NSMutableData dataWithData:[self decode:string type:type]];
     
     if (output.length <= 4) {
         
@@ -72,14 +89,24 @@ static const char *BASE_58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefgh
     [output setLength:length];
     
     return output;
+    
 }
 
 
-+ (NSString *)encode:(nonnull NSData *)data {
++ (nonnull NSString *)encode:(nonnull NSData *)data {
+    
+    return [self encode: data type: btc];
+    
+}
+
+
++ (nonnull NSString *)encode:(nonnull NSData *)data type:(Base58EncodingType)type {
+    
+    const char* BASE_58_ALPHABET = [self alphabet: type];
     
     int dataLength = (int)[data length];
     int commonLength = dataLength + 5;
-
+    
     unsigned char bytes[commonLength];
     unsigned char *input = (unsigned char *)[data bytes];
     
@@ -109,7 +136,7 @@ static const char *BASE_58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefgh
             return @"";
             
         }
-
+        
         bn = [divider copy];
         unsigned long index = [reminder getWord];
         output[counter] = (int)BASE_58_ALPHABET[index];
@@ -134,10 +161,20 @@ static const char *BASE_58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefgh
     NSString *result = [NSString stringWithCString:(const char*)output encoding:NSASCIIStringEncoding];
     
     return result;
+    
 }
 
 
-+ (NSData *)decode:(nonnull NSString *)string {
++ (nonnull NSData *)decode:(nonnull NSString *)string {
+    
+    return [self decode: string type: btc];
+    
+}
+
+
++ (nonnull NSData *)decode:(nonnull NSString *)string type:(Base58EncodingType)type {
+    
+    const char* BASE_58_ALPHABET = [self alphabet: type];
     
     const char *cstring = [string cStringUsingEncoding:NSASCIIStringEncoding];
     
@@ -166,7 +203,7 @@ static const char *BASE_58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefgh
         
         error = ![Bignum mul:bn rvalue:base58 result:bn];
         if (error) break;
-    
+        
         error = ![Bignum sum:bn rvalue:bnch result:bn];
         if (error) break;
         
@@ -191,7 +228,7 @@ static const char *BASE_58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefgh
         return [NSData data];
         
     }
-
+    
     int zeros = 0;
     
     for (const char *p = cstring; *p == *BASE_58_ALPHABET; p++) {
@@ -214,7 +251,7 @@ static const char *BASE_58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefgh
     unsigned char output[zeros + size];
     memset(output, 0, sizeof(output));
     memcpy(output + zeros, bytes + (4 + offset) , bytesSize - (4 + offset));
-
+    
     NSData *data = [NSData dataWithBytes:output length:zeros + size];
     
     return data;
@@ -240,6 +277,28 @@ int reverse(unsigned char *bytes, int inputLength, int reverseLength) {
     }
     
     return 1;
+    
+}
+
+
++ (const char*)alphabet:(Base58EncodingType)type {
+    
+    switch (type) {
+            
+        case ripple:
+            
+            return RIPPLE_ALPHABET;
+            
+            break;
+            
+        default:
+            
+            break;
+            
+    }
+    
+    return BTC_ALPHABET;
+    
 }
 
 

@@ -240,10 +240,16 @@ unsigned char SLIP0132_DEFAULT_PRV_PREFIX[] = { 0x04, 0x88, 0xAD, 0xE4 };
     return self;
 }
 
-
-- (instancetype)initWithSerializedString:(NSString *)string type:(KeyType)type {
+- (nonnull instancetype)initWithSerializedString:(nonnull NSString *)string type:(KeyType)type {
     
-    return [self initWithSerializedData:[Base58 decodeUsedChecksum:string] type:type];
+    return [self initWithSerializedData:[Base58 decodeUsedChecksum:string type: btc] type:type];
+    
+}
+
+- (instancetype)initWithSerializedString:(NSString *)string type:(KeyType)type encodingType:(Base58EncodingType)encodingType {
+    
+    return [self initWithSerializedData:[Base58 decodeUsedChecksum:string type: encodingType] type:type];
+    
 }
 
 
@@ -315,32 +321,50 @@ unsigned char SLIP0132_DEFAULT_PRV_PREFIX[] = { 0x04, 0x88, 0xAD, 0xE4 };
     ExtendedKeySecp256k1 *pubk = [[ExtendedKeySecp256k1 alloc] initWithKey:pkey chaincode:_chaincode depth:_depth parent:_parent sequence:_sequence prefixPub:_prefixPub prefixPrv:_prefixPrv];
     
     return [pubk serializedData];
+    
 }
 
 
 - (NSData *)serializedPrvData {
     
     return [self serializedData];
+    
 }
 
 
-- (NSString *)serializedPub {
+- (nonnull NSString *)serializedPub {
+    
+    return [self serializedPub: btc];
+    
+}
+
+
+- (NSString *)serializedPub: (Base58EncodingType)encodingType {
     
     switch (_key.type) {
+            
         case Public:
             
-            return [Base58 encodeUsedChecksum:[self serializedData]];
+            return [Base58 encodeUsedChecksum:[self serializedData] type: encodingType];
             
         case Private:
             
-            return [Base58 encodeUsedChecksum:[self serializedPubData]];
+            return [Base58 encodeUsedChecksum:[self serializedPubData] type: encodingType];
+            
     }
+    
 }
 
-
-- (NSString *)serializedPrv {
+- (nonnull NSString *)serializedPrv {
     
-    return [Base58 encodeUsedChecksum:[self serializedPrvData]];
+    return [Base58 encodeUsedChecksum:[self serializedPrvData] type: btc];
+    
+}
+
+- (NSString *)serializedPrv: (Base58EncodingType)encodingType {
+    
+    return [Base58 encodeUsedChecksum:[self serializedPrvData] type: encodingType];
+    
 }
 
 
@@ -404,10 +428,17 @@ unsigned char SLIP0132_DEFAULT_PRV_PREFIX[] = { 0x04, 0x88, 0xAD, 0xE4 };
     return [NSData dataWithBytes:bytes length:length];
 }
 
-
-- (NSString *)serializedString {
+- (nonnull NSString *)serializedString {
     
-    return [Base58 encodeUsedChecksum:[self serializedData]];
+    return [Base58 encodeUsedChecksum:[self serializedData] type: btc];
+    
+}
+
+
+- (NSString *)serializedString: (Base58EncodingType)encodingType {
+    
+    return [Base58 encodeUsedChecksum:[self serializedData] type: encodingType];
+    
 }
 
 
