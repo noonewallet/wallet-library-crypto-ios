@@ -82,11 +82,13 @@ public final class HDDerivation {
     
     /// Initialize with serialized extended key string
     /// - Parameter base58string: Serialized extended key
-    public init(base58string: String, type: KeyType) {
+    public init(base58string: String, type: KeyType, encodingType: Base58EncodingType = .btc) {
         
-        master = ExtendedKeySecp256k1(serializedString: base58string, type: type, encodingType: base58encoding)
+        master = ExtendedKeySecp256k1(serializedString: base58string, type: type, encodingType: encodingType)
         
-        derived = ExtendedKeySecp256k1(serializedString: base58string, type: type, encodingType: base58encoding)
+        derived = ExtendedKeySecp256k1(serializedString: base58string, type: type, encodingType: encodingType)
+        
+        base58encoding = encodingType
         
     }
     
