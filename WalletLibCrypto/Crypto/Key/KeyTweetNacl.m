@@ -82,6 +82,7 @@
 - (NSData *)publicKey {
     
     unsigned char data[32];
+    unsigned char sk[32];
     
     switch (_type) {
         case Public:
@@ -91,10 +92,9 @@
         case Private:
             
             memset(data, 0, 32);
+            memcpy(sk,[_key bytes], 32);
             
-            unsigned char *p = (unsigned char *)[_key bytes];
-            
-            crypto_sign_ed25519_tweet_keypair(data, p);
+            crypto_sign_ed25519_tweet_keypair(data, sk);
             
             NSMutableData *output = [NSMutableData dataWithBytes:data length:32];
             
