@@ -20,8 +20,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/noonewallet/wallet-library-crypto-ios.git", :tag => "v#{s.version}" }
   s.swift_version = '5.0'
 
-  s.ios.vendored_libraries = 'WalletLibCrypto/OpenSSL/libraries/libcrypto-ios.a'
-  s.osx.vendored_libraries = 'WalletLibCrypto/OpenSSL/libraries/libcrypto-osx.a'
+  s.vendored_frameworks = 'WalletLibCrypto/OpenSSL/libcrypto.xcframework'
 
   s.ios.deployment_target = "11.0"
   s.osx.deployment_target = "11.0"
@@ -32,9 +31,7 @@ Pod::Spec.new do |s|
 
   s.private_header_files = 'WalletLibCrypto/PrivateHeaders/**/*{h}'
 
-  s.pod_target_xcconfig = { 
-    'SWIFT_INCLUDE_PATHS' => "#{File.join(File.dirname(__FILE__))}/WalletLibCrypto/OpenSSL/libraries/**",  
-    'LIBRARY_SEARCH_PATHS' => "#{File.join(File.dirname(__FILE__))}/WalletLibCrypto/OpenSSL/libraries/**",
+  s.pod_target_xcconfig = {
     'HEADER_SEARCH_PATHS' => "#{File.join(File.dirname(__FILE__))}/WalletLibCrypto/OpenSSL/headers/**"
   }
 

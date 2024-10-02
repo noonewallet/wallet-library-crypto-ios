@@ -2,9 +2,11 @@
 
 SDK_PATH_SIM="`xcode-select --print-path`/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
 SDK_PATH_IOS="`xcode-select --print-path`/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+SDK_PATH_MACOS="`xcode-select --print-path`/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
 
 echo $SDK_PATH_SIM
 echo $SDK_PATH_IOS
+echo $SDK_PATH_MACOS
 
 OPENSSL_MVERSION="1.1.1"
 OPENSSL_VERSION="1.1.1j"
@@ -38,30 +40,34 @@ build() {
     make clean 1>> /dev/null
 }
 
-build ios-sim-cc
+build ios-sim-x86_64-cc
+build ios-sim-arm64-cc
 build ios-arm64-cc
 build ios-armv7-cc
+build macos-cc
 
-echo building $OPENSSL_VERSION for macos-arm64-cc ...
-./Configure macos-arm64-cc shared enable-rc5 zlib no-asm 1>>/dev/null
-make -j8 1>>/dev/null
-cp ./libcrypto.a ./libcrypto-osx.a
+mkdir -p ios-sim-fat
+mkdir -p ios-fat
 
-cp -r ./include/openssl ../../../OpenSSL/headers/
+lipo -create \
+    ios-sim-x86_64-cc/libcrypto.a \
+    ios-sim-arm64-cc/libcrypto.a \
+    -output ios-sim-fat/libcrypto.a
+    
+lipo -create \
+    ios-arm64-cc/libcrypto.a \
+    ios-armv7-cc/libcrypto.a \
+    -output ios-fat/libcrypto.a
 
-make clean 1>> /dev/null
+xcodebuild -create-xcframework \
+    -library ios-sim-fat/libcrypto.a \
+    -library ios-fat/libcrypto.a \
+    -library macos-cc/libcrypto.a \
+    -output ./libcrypto.xcframework
 
-lipo \
-    "ios-sim-cc/libcrypto.a" \
-    "ios-armv7-cc/libcrypto.a" \
-    "ios-arm64-cc/libcrypto.a" \
-    -create -output ./libcrypto-ios.a
-
-lipo ./libcrypto-ios.a -info
-lipo ./libcrypto-osx.a -info
-
-cp ./libcrypto-ios.a ../../../WalletLibCrypto/OpenSSL/libraries/
-cp ./libcrypto-osx.a ../../../WalletLibCrypto/OpenSSL/libraries/
+mkdir -p ../../../WalletLibCrypto/OpenSSL/headers/openssl
+cp ./include/openssl/* ../../../WalletLibCrypto/OpenSSL/headers/openssl/
+cp -r ./libcrypto.xcframework ../../../WalletLibCrypto/OpenSSL
 
 cd ..
 
