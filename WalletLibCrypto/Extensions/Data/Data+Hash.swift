@@ -28,6 +28,11 @@ public extension Data {
         return Hash.sha256Double(from: self)
     }
     
+    func sha512() -> Data {
+        
+        return Hash.sha512(from: self)
+    }
+    
     
     func blake2b256() -> Data {
         

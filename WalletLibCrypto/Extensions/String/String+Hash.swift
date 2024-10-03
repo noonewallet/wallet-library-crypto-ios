@@ -35,6 +35,14 @@ public extension String {
     }
     
     
+    func sha512() -> Data {
+        
+        guard let data = self.data(using: .utf8) else { return Data() }
+        
+        return Hash.sha512(from: data)
+    }
+    
+    
     func blake2b256() -> Data {
         
         guard let data = self.data(using: .utf8) else { return Data() }

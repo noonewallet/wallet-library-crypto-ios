@@ -6,6 +6,7 @@
 
 import Foundation
 import WalletLibCrypto.KeySecp256k1
+import WalletLibCrypto.Base58
 import CommonCrypto
 
 
@@ -33,10 +34,13 @@ public final class HDDerivation {
     public var derived: ExtendedKeySecp256k1
     
     
+    public var base58encoding: Base58EncodingType = .btc
+    
+    
     /// Extended public key for last derived key
     public var extPub: String {
         
-        return derived.serializedPub()
+        return derived.serializedPub(base58encoding)
         
     }
     
@@ -44,7 +48,7 @@ public final class HDDerivation {
     /// Extended private key for last derived key
     public var extPrv: String {
         
-        return derived.serializedPrv()
+        return derived.serializedPrv(base58encoding)
     }
     
     
@@ -70,16 +74,22 @@ public final class HDDerivation {
         let extendedKey = ExtendedKeySecp256k1(key: key, chaincode: outputData.subdata(in: 32..<outputData.count), prefixPub: Data(prefix.pub), prefixPrv: Data(prefix.prv))
         
         master = extendedKey
+        
         derived = ExtendedKeySecp256k1(key: key, chaincode: outputData.subdata(in: 32..<outputData.count), prefixPub: Data(prefix.pub), prefixPrv: Data(prefix.prv))
+        
     }
     
     
     /// Initialize with serialized extended key string
     /// - Parameter base58string: Serialized extended key
-    public init(base58string: String, type: KeyType) {
+    public init(base58string: String, type: KeyType, encodingType: Base58EncodingType = .btc) {
         
-        master = ExtendedKeySecp256k1(serializedString: base58string, type: type)
-        derived = ExtendedKeySecp256k1(serializedString: base58string, type: type)
+        master = ExtendedKeySecp256k1(serializedString: base58string, type: type, encodingType: encodingType)
+        
+        derived = ExtendedKeySecp256k1(serializedString: base58string, type: type, encodingType: encodingType)
+        
+        base58encoding = encodingType
+        
     }
     
     
@@ -88,7 +98,9 @@ public final class HDDerivation {
     public init(extendedKey: ExtendedKeySecp256k1) {
         
         master = extendedKey
+        
         derived = ExtendedKeySecp256k1(extendedKey: extendedKey)
+        
     }
     
     

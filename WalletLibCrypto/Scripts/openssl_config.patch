@@ -1,11 +1,11 @@
 diff --git a/Configurations/10-main.conf b/Configurations/10-main.conf
 --- a/Configurations/10-main.conf
 +++ b/Configurations/10-main.conf
-@@ -1557,6 +1557,36 @@
+@@ -1557,6 +1557,44 @@
          bn_ops           => "SIXTY_FOUR_BIT_LONG",
          perlasm_scheme   => "macosx",
      },
-+    "macos-arm64-cc" => {
++    "macos-cc" => {
 +        inherit_from     => [ "darwin-common", asm("aarch64_asm") ],
 +        CFLAGS           => add("-Wall"),
 +        cflags           => add("-arch arm64 -arch x86_64"),
@@ -15,10 +15,18 @@ diff --git a/Configurations/10-main.conf b/Configurations/10-main.conf
 +    },
 +    "ios-sim-cc" => {
 +        inherit_from     => [ "darwin-common", asm("no_asm") ],
-+        cflags           => add("-arch x86_64 -DOPENSSL_NO_ASM -mios-version-min=7.0.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk -fno-common"),
++        cflags           => add("-DOPENSSL_NO_ASM -mios-version-min=7.0.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk -fno-common"),
 +        sys_id           => "iOS",
 +        bn_ops           => "SIXTY_FOUR_BIT_LONG RC4_CHAR",
 +        perlasm_scheme   => "ios64",
++    },
++    "ios-sim-x86_64-cc" => {
++        inherit_from     => [ "ios-sim-cc" ],
++        cflags           => add("-arch x86_64"),
++    },
++    "ios-sim-arm64-cc" => {
++        inherit_from     => [ "ios-sim-cc" ],
++        cflags           => add("-arch arm64 -target arm64-apple-ios-simulator"),
 +    },
 +    "ios-cc" => {
 +        inherit_from     => [ "darwin-common", asm("no_asm") ],

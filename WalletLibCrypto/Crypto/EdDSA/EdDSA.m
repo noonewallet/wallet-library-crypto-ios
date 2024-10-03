@@ -9,6 +9,7 @@
 
 #include "openssl/evp.h"
 #include "ed25519.h"
+#include "TweetNacl.h"
 
 
 @implementation EdDSA
@@ -72,6 +73,23 @@
 }
 
 
++ (nonnull NSData *)sign:(NSData *)message tweetnacl:(NSData *)key {
+
+    const unsigned char *skey = (unsigned char *)[key bytes];
+    const unsigned char *msg = (unsigned char *)[message bytes];
+    unsigned long long msgLength = [message length];
+
+    unsigned long long sigLength = 64;
+    unsigned char sig[sigLength];
+    
+    crypto_sign_ed25519_tweet(sig, &sigLength, msg, msgLength, skey);
+
+    NSData *result = [NSData dataWithBytes:sig length:sigLength];
+
+    return result;
+}
+
+
 + (BOOL)validateSignature:(NSData *)signature message:(NSData *)message forPublicKey:(NSData *)key {
 
     const unsigned char *sig = (unsigned char *)[signature bytes];
@@ -112,9 +130,9 @@
 }
 
 
-+ (BOOL)validateDonnaSignature:(NSData *)signature message:(NSData *)message forPublicKey:(NSData *)key {
++ (BOOL)validateTweetNaclSignature:(NSData *)signature message:(NSData *)message forPublicKey:(NSData *)key {
 
-    static const size_t sigLen = 64;
+    static const unsigned long long sigLen = 96;
     static const size_t keyLen = 32;
 
     if (([signature length] != sigLen) ||
@@ -124,12 +142,13 @@
         return NO;
 
     }
-
-    const unsigned char *vkey = (unsigned char *)[key bytes];
-    const unsigned char *msg = (unsigned char *)[message bytes];
+    
+    unsigned char *msg = (unsigned char *)[message bytes];
+    unsigned long long msgLenght = [message length];
     const unsigned char *sig = (unsigned char *)[signature bytes];
+    const unsigned char *vkey = (unsigned char *)[key bytes];
 
-    int result = cardano_crypto_ed25519_sign_open(msg, [message length], vkey, sig);
+    int result = crypto_sign_ed25519_tweet_open(msg, &msgLenght, sig, sigLen, vkey);
 
     if (result == 0) {
 

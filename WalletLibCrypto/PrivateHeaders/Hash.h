@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (nonnull NSData *)sha256From:(nonnull NSData *)data;
 
 
++ (nonnull NSData *)sha512From:(nonnull NSData *)data;
+
+
 + (nonnull NSData *)sha256DoubleFrom:(nonnull NSData *)data;
 
 

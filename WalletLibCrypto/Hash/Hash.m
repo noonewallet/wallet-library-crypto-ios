@@ -59,6 +59,20 @@
 }
 
 
++ (nonnull NSData *)sha512From:(nonnull NSData *)data {
+    
+    unsigned char output[CC_SHA512_DIGEST_LENGTH];
+    memset(output, 0, CC_SHA512_DIGEST_LENGTH);
+    
+    CC_SHA512([data bytes], (CC_LONG)[data length], output);
+    
+    NSData *hash = [NSData dataWithBytes:output length:CC_SHA512_DIGEST_LENGTH];
+    memset(output, 0, sizeof(output));
+    
+    return hash;
+}
+
+
 + (nonnull NSData *)sha256DoubleFrom:(nonnull NSData *)data {
     
     return [Hash sha256From:[Hash sha256From:data]];

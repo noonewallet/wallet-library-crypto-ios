@@ -10,6 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import "KeyType.h"
+#import "Base58.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -64,6 +65,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithSerializedString:(NSString *)string type:(KeyType)type;
 
 
+- (instancetype)initWithSerializedString:(NSString *)string type:(KeyType)type encodingType:(Base58EncodingType)encodingType;
+
+
 - (instancetype)initWithSerializedData:(NSData *)data type:(KeyType)type;
 
 
@@ -83,6 +87,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (NSString *)serializedString;
+
+
+- (NSString *)serializedPub: (Base58EncodingType)encodingType;
+
+
+- (NSString *)serializedPrv: (Base58EncodingType)encodingType;
+
+
+- (NSString *)serializedString: (Base58EncodingType)encodingType;
 
 
 - (NSData *)serializedData;

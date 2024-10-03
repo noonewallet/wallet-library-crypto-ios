@@ -660,14 +660,13 @@ sv scalarbase(gf p[4],const u8 *s)
   M(q[3],X,Y);
   scalarmult(p,q,s);
 }
-/*
+
 int crypto_sign_keypair(u8 *pk, u8 *sk)
 {
   u8 d[64];
   gf p[4];
   int i;
 
-  randombytes(sk, 32);
   crypto_hash(d, sk, 32);
   d[0] &= 248;
   d[31] &= 127;
@@ -679,7 +678,6 @@ int crypto_sign_keypair(u8 *pk, u8 *sk)
   FOR(i,32) sk[32 + i] = pk[i];
   return 0;
 }
-*/
 
 static const u64 L[32] = {0xed, 0xd3, 0xf5, 0x5c, 0x1a, 0x63, 0x12, 0x58, 0xd6, 0x9c, 0xf7, 0xa2, 0xde, 0xf9, 0xde, 0x14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x10};
 
