@@ -13,8 +13,6 @@
 		75A13148296C4AAA00DCBD5A /* WalletLibCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A1313D296C4AAA00DCBD5A /* WalletLibCrypto.framework */; };
 		75A1314E296C4AAA00DCBD5A /* WalletLibCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 75A13140296C4AAA00DCBD5A /* WalletLibCrypto.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75A13163296C58EA00DCBD5A /* Bignum.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A13162296C58EA00DCBD5A /* Bignum.m */; };
-		75A132C2296C5BFA00DCBD5A /* libcrypto-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A1324C296C5BFA00DCBD5A /* libcrypto-ios.a */; platformFilter = ios; };
-		75A132C3296C5BFA00DCBD5A /* libcrypto-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A1324D296C5BFA00DCBD5A /* libcrypto-osx.a */; platformFilter = maccatalyst; };
 		75A132C4296C5BFA00DCBD5A /* pem2.h in Headers */ = {isa = PBXBuildFile; fileRef = 75A13250296C5BFA00DCBD5A /* pem2.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		75A132C5296C5BFA00DCBD5A /* kdf.h in Headers */ = {isa = PBXBuildFile; fileRef = 75A13251296C5BFA00DCBD5A /* kdf.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		75A132C6296C5BFA00DCBD5A /* pem.h in Headers */ = {isa = PBXBuildFile; fileRef = 75A13252296C5BFA00DCBD5A /* pem.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -198,6 +196,7 @@
 		75AAF32B296F10A900FDC626 /* String+Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF32A296F10A900FDC626 /* String+Base58.swift */; };
 		75AAF32D296F114A00FDC626 /* Data+Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF32C296F114A00FDC626 /* Data+Base58.swift */; };
 		D53EB7D22BD7DDA000AD6E5A /* Base58RippleTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53EB7D12BD7DDA000AD6E5A /* Base58RippleTestData.swift */; };
+		DA52E4ED2CB5D1DD00B951DC /* libcrypto.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA52E4EC2CB5D1DD00B951DC /* libcrypto.xcframework */; };
 		F95B2FA02C413AF30092D231 /* KeyTweetNacl.m in Sources */ = {isa = PBXBuildFile; fileRef = F95B2F9F2C413AF30092D231 /* KeyTweetNacl.m */; };
 		F95B2FA42C414FE60092D231 /* EdDSATest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95B2FA32C414FE60092D231 /* EdDSATest.swift */; };
 		F95B2FA52C41511F0092D231 /* KeyTweetNacl.h in Headers */ = {isa = PBXBuildFile; fileRef = F95B2FA12C413B2E0092D231 /* KeyTweetNacl.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -230,8 +229,6 @@
 		75A1315F296C562D00DCBD5A /* Hash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Hash.h; sourceTree = "<group>"; };
 		75A13160296C576C00DCBD5A /* HexConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HexConverter.h; sourceTree = "<group>"; };
 		75A13162296C58EA00DCBD5A /* Bignum.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bignum.m; sourceTree = "<group>"; };
-		75A1324C296C5BFA00DCBD5A /* libcrypto-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libcrypto-ios.a"; sourceTree = "<group>"; };
-		75A1324D296C5BFA00DCBD5A /* libcrypto-osx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libcrypto-osx.a"; sourceTree = "<group>"; };
 		75A13250296C5BFA00DCBD5A /* pem2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pem2.h; sourceTree = "<group>"; };
 		75A13251296C5BFA00DCBD5A /* kdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kdf.h; sourceTree = "<group>"; };
 		75A13252296C5BFA00DCBD5A /* pem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pem.h; sourceTree = "<group>"; };
@@ -407,6 +404,7 @@
 		75AAF32C296F114A00FDC626 /* Data+Base58.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Base58.swift"; sourceTree = "<group>"; };
 		75F7F27C296C629600DBD91A /* WalletLibCrypto.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = WalletLibCrypto.modulemap; sourceTree = "<group>"; };
 		D53EB7D12BD7DDA000AD6E5A /* Base58RippleTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58RippleTestData.swift; sourceTree = "<group>"; };
+		DA52E4EC2CB5D1DD00B951DC /* libcrypto.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libcrypto.xcframework; sourceTree = "<group>"; };
 		F95B2F9F2C413AF30092D231 /* KeyTweetNacl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyTweetNacl.m; sourceTree = "<group>"; };
 		F95B2FA12C413B2E0092D231 /* KeyTweetNacl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyTweetNacl.h; sourceTree = "<group>"; };
 		F95B2FA32C414FE60092D231 /* EdDSATest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdDSATest.swift; sourceTree = "<group>"; };
@@ -417,8 +415,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75A132C2296C5BFA00DCBD5A /* libcrypto-ios.a in Frameworks */,
-				75A132C3296C5BFA00DCBD5A /* libcrypto-osx.a in Frameworks */,
+				DA52E4ED2CB5D1DD00B951DC /* libcrypto.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,19 +545,10 @@
 		75A1324A296C5BFA00DCBD5A /* OpenSSL */ = {
 			isa = PBXGroup;
 			children = (
-				75A1324B296C5BFA00DCBD5A /* libraries */,
+				DA52E4EC2CB5D1DD00B951DC /* libcrypto.xcframework */,
 				75A1324E296C5BFA00DCBD5A /* headers */,
 			);
 			path = OpenSSL;
-			sourceTree = "<group>";
-		};
-		75A1324B296C5BFA00DCBD5A /* libraries */ = {
-			isa = PBXGroup;
-			children = (
-				75A1324C296C5BFA00DCBD5A /* libcrypto-ios.a */,
-				75A1324D296C5BFA00DCBD5A /* libcrypto-osx.a */,
-			);
-			path = libraries;
 			sourceTree = "<group>";
 		};
 		75A1324E296C5BFA00DCBD5A /* headers */ = {
@@ -1298,7 +1286,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/WalletLibCrypto/PrivateHeaders";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/WalletLibCrypto/OpenSSL/libraries";
 				MODULEMAP_FILE = WalletLibCrypto.modulemap;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1358,7 +1345,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/WalletLibCrypto/PrivateHeaders";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/WalletLibCrypto/OpenSSL/libraries";
 				MODULEMAP_FILE = WalletLibCrypto.modulemap;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
