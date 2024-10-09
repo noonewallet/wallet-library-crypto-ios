@@ -25,14 +25,14 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "11.0"
   s.osx.deployment_target = "11.0"
 
-  s.source_files  = 'WalletLibCrypto/WalletLibCrypto.h', 'WalletLibCrypto/PrivateHeaders/*{h}', 'WalletLibCrypto/**/*{m,c,swift}', 'WalletLibCrypto/OpenSSL'
+  s.source_files  = 'WalletLibCrypto/WalletLibCrypto.h', 'WalletLibCrypto/PrivateHeaders/*{h}', 'WalletLibCrypto/**/*{m,c,swift}', 'WalletLibCrypto/OpenSSL/headers/**/*{h}'
 
   s.module_map    = 'WalletLibCrypto/WalletLibCrypto.modulemap'
 
-  s.private_header_files = 'WalletLibCrypto/PrivateHeaders/**/*{h}'
+  s.private_header_files = 'WalletLibCrypto/PrivateHeaders/**/*{h}', 'WalletLibCrypto/OpenSSL/headers/**/*{h}'
 
   s.pod_target_xcconfig = {
-    'HEADER_SEARCH_PATHS' => "#{File.join(File.dirname(__FILE__))}/WalletLibCrypto/OpenSSL/headers/**"
+    'HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/WalletLibCrypto/WalletLibCrypto/PrivateHeaders/**" "$(PODS_ROOT)/WalletLibCrypto/WalletLibCrypto/OpenSSL/headers/**"'
   }
 
 end
