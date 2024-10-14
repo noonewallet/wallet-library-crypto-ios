@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
 
   s.module_map    = 'WalletLibCrypto/WalletLibCrypto.modulemap'
 
-  s.private_header_files = 'WalletLibCrypto/PrivateHeaders/**/*{h}', 'WalletLibCrypto/OpenSSL/headers/**/*{h}'
+  s.private_header_files = 'WalletLibCrypto/PrivateHeaders/**/*.h', 'WalletLibCrypto/OpenSSL/headers/**/*.h'
 
   s.pod_target_xcconfig = {
     'HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/WalletLibCrypto/WalletLibCrypto/PrivateHeaders/**" "$(PODS_ROOT)/WalletLibCrypto/WalletLibCrypto/OpenSSL/headers/**"'
