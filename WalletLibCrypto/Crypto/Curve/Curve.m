@@ -9,8 +9,6 @@
 
 
 #import <openssl/ec.h>
-#import <openssl/ecdh.h>
-#import <openssl/ecdsa.h>
 #import <openssl/evp.h>
 #import <openssl/bn.h>
 
