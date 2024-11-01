@@ -11,8 +11,6 @@
 #import <Curve.h>
 
 #import <openssl/ec.h>
-#import <openssl/ecdh.h>
-#import <openssl/ecdsa.h>
 
 #include <CommonCrypto/CommonCrypto.h>
 

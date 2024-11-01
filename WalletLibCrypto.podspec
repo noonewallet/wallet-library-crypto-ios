@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   s.private_header_files = 'WalletLibCrypto/PrivateHeaders/**/*{h}'
 
   s.pod_target_xcconfig = {
-    'HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/WalletLibCrypto/WalletLibCrypto/PrivateHeaders/**"'
+    'HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/WalletLibCrypto/WalletLibCrypto/PrivateHeaders"'
   }
 
 end
