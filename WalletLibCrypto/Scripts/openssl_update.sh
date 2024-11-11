@@ -61,12 +61,13 @@ lipo -create \
 
 xcodebuild -create-xcframework \
     -library ios-sim-fat/libcrypto.a \
+    -headers ../../../WalletLibCrypto/OpenSSL/Headers \
     -library ios-fat/libcrypto.a \
+    -headers ../../../WalletLibCrypto/OpenSSL/Headers \
     -library macos-cc/libcrypto.a \
+    -headers ../../../WalletLibCrypto/OpenSSL/Headers \
     -output ./libcrypto.xcframework
 
-mkdir -p ../../../WalletLibCrypto/OpenSSL/headers/openssl
-cp ./include/openssl/* ../../../WalletLibCrypto/OpenSSL/headers/openssl/
 cp -r ./libcrypto.xcframework ../../../WalletLibCrypto/OpenSSL
 
 cd ..

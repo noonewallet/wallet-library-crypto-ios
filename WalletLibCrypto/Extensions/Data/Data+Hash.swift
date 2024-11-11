@@ -33,10 +33,20 @@ public extension Data {
         return Hash.sha512(from: self)
     }
     
+    func blake2b128() -> Data {
+        
+        return Hash.blake2b128(from: self)
+    }
+    
     
     func blake2b256() -> Data {
         
         return Hash.blake2b256(from: self)
+    }
+    
+    func blake2b512() -> Data {
+        
+        return Hash.blake2b512(from: self)
     }
     
     

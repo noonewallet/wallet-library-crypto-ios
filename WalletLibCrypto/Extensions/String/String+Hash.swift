@@ -50,6 +50,13 @@ public extension String {
         return Hash.blake2b256(from: data)
     }
     
+    func blake2b512() -> Data {
+        
+        guard let data = self.data(using: .utf8) else { return Data() }
+        
+        return Hash.blake2b512(from: data)
+    }
+    
     
     func blake2b224() -> Data {
         

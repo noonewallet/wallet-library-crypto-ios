@@ -79,9 +79,45 @@
 }
 
 
++ (nonnull NSData *)blake2b128From:(nonnull NSData *)data {
+    
+    static const size_t outputLen = 16;
+
+    uint8_t output[outputLen];
+    memset(output, 0, outputLen);
+    
+    uint8_t *udata = (uint8_t *)[data bytes];
+    size_t len = (size_t)[data length];
+    
+    blake2b(output, outputLen, NULL, 0, udata, len);
+
+    NSData *hash = [NSData dataWithBytes:output length:outputLen];
+    
+    return hash;
+}
+
+
 + (nonnull NSData *)blake2b256From:(nonnull NSData *)data {
     
     static const size_t outputLen = 32;
+
+    uint8_t output[outputLen];
+    memset(output, 0, outputLen);
+    
+    uint8_t *udata = (uint8_t *)[data bytes];
+    size_t len = (size_t)[data length];
+    
+    blake2b(output, outputLen, NULL, 0, udata, len);
+
+    NSData *hash = [NSData dataWithBytes:output length:outputLen];
+    
+    return hash;
+}
+
+
++ (nonnull NSData *)blake2b512From:(nonnull NSData *)data {
+    
+    static const size_t outputLen = 64;
 
     uint8_t output[outputLen];
     memset(output, 0, outputLen);
