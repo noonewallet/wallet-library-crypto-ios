@@ -13,14 +13,11 @@ public enum PBKDF2SHA512 {
         iterations: UInt32,
         keyLength: Int
     ) -> Data? {
-        // Prepare output buffer for the derived key
         var derivedKey = Data(count: keyLength)
         
-        // Use `withUnsafeBytes` to access the data in a safe way
         let result = derivedKey.withUnsafeMutableBytes { derivedKeyBytes in
             password.withUnsafeBytes { passwordBytes in
                 salt.withUnsafeBytes { saltBytes in
-                    // Call CCKeyDerivationPBKDF with Swift's safe pointers
                     CCKeyDerivationPBKDF(
                         CCPBKDFAlgorithm(kCCPBKDF2),
                         passwordBytes.baseAddress,
@@ -29,14 +26,13 @@ public enum PBKDF2SHA512 {
                         salt.count,
                         CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA512),
                         iterations,
-                        derivedKeyBytes.bindMemory(to: UInt8.self).baseAddress,
+                        derivedKeyBytes.baseAddress,
                         keyLength
                     )
                 }
             }
         }
         
-        // Check if the operation was successful
         guard result == kCCSuccess else {
             assertionFailure("Key derivation failed with status: \(result)")
             return nil
