@@ -5,57 +5,84 @@
 //
 
 import CommonCrypto
-import WalletLibCrypto.PBKDF2SHA512
 
 public enum PBKDF2SHA512 {
-    public static func foo(
+    public static func makeAESKey(
         password: Data,
         salt: Data,
-        iterations: Int32,
-        keyLength: Int32
-    ) -> Data {
-        if let key = PBKDF2SHA512.derive(
-            withPassword: password,
-            salt: salt,
-            iterations: iterations,
-            keyLength: keyLength
-        ) {
-            return key
+        iterations: UInt32,
+        keyLength: Int
+    ) -> Data? {
+        // Prepare output buffer for the derived key
+        var derivedKey = Data(count: keyLength)
+        
+        // Use `withUnsafeBytes` to access the data in a safe way
+        let result = derivedKey.withUnsafeMutableBytes { derivedKeyBytes in
+            password.withUnsafeBytes { passwordBytes in
+                salt.withUnsafeBytes { saltBytes in
+                    // Call CCKeyDerivationPBKDF with Swift's safe pointers
+                    CCKeyDerivationPBKDF(
+                        CCPBKDFAlgorithm(kCCPBKDF2),
+                        passwordBytes.baseAddress,
+                        password.count,
+                        saltBytes.baseAddress,
+                        salt.count,
+                        CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA512),
+                        iterations,
+                        derivedKeyBytes.bindMemory(to: UInt8.self).baseAddress,
+                        keyLength
+                    )
+                }
+            }
         }
-        assertionFailure("Key is unexpectedly nil")
-        return Data()
+        
+        // Check if the operation was successful
+        guard result == kCCSuccess else {
+            assertionFailure("Key derivation failed with status: \(result)")
+            return nil
+        }
+        
+        return derivedKey
     }
     
-    public static func bar(
-        password: Data,
-        salt: Data,
-        iterations: Int32,
-        keyLength: Int
-    ) -> Data {
-        let int8password = password.withUnsafeBytes {
-            [Int8]($0.bindMemory(to: Int8.self))
+    public static func encryptEntropy(entropy: Data, aesKey: Data, iv: Data) -> Data? {
+        guard aesKey.count == kCCKeySizeAES256, iv.count == kCCBlockSizeAES128 else {
+            assertionFailure("Invalid key or IV length.")
+            return nil
         }
         
-        let uint8salt = salt.withUnsafeBytes {
-            [UInt8]($0)
+        let bufferSize = entropy.count + kCCBlockSizeAES128
+        var buffer = Data(count: bufferSize)
+        var dataOutMoved: size_t = 0
+        
+        let status = aesKey.withUnsafeBytes { keyBytes in
+            iv.withUnsafeBytes { ivBytes in
+                entropy.withUnsafeBytes { entropyBytes in
+                    buffer.withUnsafeMutableBytes { bufferBytes in
+                        CCCrypt(
+                            CCOperation(kCCEncrypt),
+                            CCAlgorithm(kCCAlgorithmAES),
+                            CCOptions(kCCOptionPKCS7Padding),
+                            keyBytes.baseAddress,
+                            aesKey.count,
+                            ivBytes.baseAddress,
+                            entropyBytes.baseAddress,
+                            entropy.count,
+                            bufferBytes.baseAddress,
+                            bufferSize,
+                            &dataOutMoved
+                        )
+                    }
+                }
+            }
         }
         
-        var uint8seed = Array<UInt8>(repeating: 0, count: keyLength)
+        guard status == kCCSuccess else {
+            assertionFailure("Encryption failed with status: \(status)")
+            return nil
+        }
         
-        CCKeyDerivationPBKDF(
-            CCPBKDFAlgorithm(kCCPBKDF2),
-            int8password,
-            password.count,
-            uint8salt,
-            salt.count,
-            CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA512),
-            2048,
-            &uint8seed,
-            keyLength
-        )
-        
-        let seed = Data(uint8seed)
-        
-        return seed
+        buffer.count = dataOutMoved
+        return iv + buffer
     }
 }

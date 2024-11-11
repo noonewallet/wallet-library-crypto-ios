@@ -29,7 +29,13 @@ NS_ASSUME_NONNULL_BEGIN
 + (nonnull NSData *)sha256DoubleFrom:(nonnull NSData *)data;
 
 
++ (nonnull NSData *)blake2b128From:(nonnull NSData *)data;
+
+
 + (nonnull NSData *)blake2b256From:(nonnull NSData *)data;
+
+
++ (nonnull NSData *)blake2b512From:(nonnull NSData *)data;
 
 
 + (nonnull NSData *)blake2b224From:(nonnull NSData *)data;
