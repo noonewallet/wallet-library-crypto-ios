@@ -1,5 +1,5 @@
 //
-//  GoogleDriveEncryption.swift
+//  PBKDF2SHA512Tests.swift
 //  WalletLibCryptoTests
 //
 //
@@ -7,7 +7,7 @@
 import XCTest
 @testable import WalletLibCrypto
 
-final class GoogleDriveEncryptionTests: XCTestCase {
+final class PBKDF2SHA512Tests: XCTestCase {
 
     func testKey() async throws {
         let expectedEid = Data(hex: "39f2d14470847bdbf54f8e7f34dbfc05233b5873f85cd0afa38214063b0bc219")
@@ -21,12 +21,7 @@ final class GoogleDriveEncryptionTests: XCTestCase {
         let password = "1234".data(using: .utf8)!
         let salt = "69c41473e1fadc65b310546a03bbb0e697b5e1d0d2138eff08455dec855afc7f".data(using: .utf8)!
         
-        let aesKey = PBKDF2SHA512.makeAESKey(
-            password: password,
-            salt: salt,
-            iterations: 2048,
-            keyLength: 32
-        )!
+        let aesKey = PBKDF2SHA512.makeAESKey(password: password, salt: salt)!
         
         let encryptedData = PBKDF2SHA512.encryptEntropy(
             entropy: entropy,
@@ -34,8 +29,8 @@ final class GoogleDriveEncryptionTests: XCTestCase {
             iv: iv
         )!
         
-        let ehash = encryptedData.blake2b128()
-        let eid = (encryptedData + password).blake2b256()
+        let ehash = PBKDF2SHA512.makeEhash(encryptedData: encryptedData)!
+        let eid = PBKDF2SHA512.makeEid(encryptedData: encryptedData, password: password)!
         
         XCTAssertEqual(expectedKeyBytes.hex, aesKey.hex)
         XCTAssertEqual(expectedEncryptedData.hex, encryptedData.hex)

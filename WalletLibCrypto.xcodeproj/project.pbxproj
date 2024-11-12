@@ -82,7 +82,7 @@
 		75AAF32B296F10A900FDC626 /* String+Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF32A296F10A900FDC626 /* String+Base58.swift */; };
 		75AAF32D296F114A00FDC626 /* Data+Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF32C296F114A00FDC626 /* Data+Base58.swift */; };
 		D53EB7D22BD7DDA000AD6E5A /* Base58RippleTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53EB7D12BD7DDA000AD6E5A /* Base58RippleTestData.swift */; };
-		DA4162222CDD24390044B2EA /* GoogleDriveEncryptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4162212CDD24390044B2EA /* GoogleDriveEncryptionTests.swift */; };
+		DA4162222CDD24390044B2EA /* PBKDF2SHA512Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4162212CDD24390044B2EA /* PBKDF2SHA512Tests.swift */; };
 		DA4162242CDD246B0044B2EA /* PBKDF2SHA512.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4162232CDD246B0044B2EA /* PBKDF2SHA512.swift */; };
 		DA52E4ED2CB5D1DD00B951DC /* libcrypto.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA52E4EC2CB5D1DD00B951DC /* libcrypto.xcframework */; };
 		F95B2FA02C413AF30092D231 /* KeyTweetNacl.m in Sources */ = {isa = PBXBuildFile; fileRef = F95B2F9F2C413AF30092D231 /* KeyTweetNacl.m */; };
@@ -178,7 +178,7 @@
 		75AAF32C296F114A00FDC626 /* Data+Base58.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Base58.swift"; sourceTree = "<group>"; };
 		75F7F27C296C629600DBD91A /* WalletLibCrypto.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = WalletLibCrypto.modulemap; sourceTree = "<group>"; };
 		D53EB7D12BD7DDA000AD6E5A /* Base58RippleTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58RippleTestData.swift; sourceTree = "<group>"; };
-		DA4162212CDD24390044B2EA /* GoogleDriveEncryptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveEncryptionTests.swift; sourceTree = "<group>"; };
+		DA4162212CDD24390044B2EA /* PBKDF2SHA512Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBKDF2SHA512Tests.swift; sourceTree = "<group>"; };
 		DA4162232CDD246B0044B2EA /* PBKDF2SHA512.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBKDF2SHA512.swift; sourceTree = "<group>"; };
 		DA52E4EC2CB5D1DD00B951DC /* libcrypto.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libcrypto.xcframework; sourceTree = "<group>"; };
 		F95B2F9F2C413AF30092D231 /* KeyTweetNacl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyTweetNacl.m; sourceTree = "<group>"; };
@@ -251,7 +251,7 @@
 				75AAF243296DC8AE00FDC626 /* Encoding */,
 				75AAF242296DC89E00FDC626 /* HDDerivation */,
 				75AAF241296DC88700FDC626 /* KeySecp256k1 */,
-				DA4162212CDD24390044B2EA /* GoogleDriveEncryptionTests.swift */,
+				DA4162212CDD24390044B2EA /* PBKDF2SHA512Tests.swift */,
 			);
 			path = WalletLibCryptoTests;
 			sourceTree = "<group>";
@@ -759,7 +759,7 @@
 				75AAF245296DC8C600FDC626 /* Base58Test.swift in Sources */,
 				75AAF249296DC9BB00FDC626 /* Base58testExpected.swift in Sources */,
 				75AAF240296DC24000FDC626 /* HDDerivationTestVector.swift in Sources */,
-				DA4162222CDD24390044B2EA /* GoogleDriveEncryptionTests.swift in Sources */,
+				DA4162222CDD24390044B2EA /* PBKDF2SHA512Tests.swift in Sources */,
 				75AAF222296DA80200FDC626 /* KeySecp256k1Test.swift in Sources */,
 				F95B2FA42C414FE60092D231 /* EdDSATest.swift in Sources */,
 			);
