@@ -129,6 +129,36 @@
     
 }
 
++ (BOOL)validateDonnaSignature:(NSData *)signature message:(NSData *)message forPublicKey:(NSData *)key {
+
+    static const size_t sigLen = 64;
+    static const size_t keyLen = 32;
+
+    if (([signature length] != sigLen) ||
+        ([key length] != keyLen) ||
+        ([message length] == 0)) {
+
+        return NO;
+
+    }
+
+    const unsigned char *vkey = (unsigned char *)[key bytes];
+    const unsigned char *msg = (unsigned char *)[message bytes];
+    const unsigned char *sig = (unsigned char *)[signature bytes];
+
+    int result = cardano_crypto_ed25519_sign_open(msg, [message length], vkey, sig);
+
+    if (result == 0) {
+
+        return YES;
+
+    } else {
+
+        return NO;
+
+    }
+}
+
 
 + (BOOL)validateTweetNaclSignature:(NSData *)signature message:(NSData *)message forPublicKey:(NSData *)key {
 
