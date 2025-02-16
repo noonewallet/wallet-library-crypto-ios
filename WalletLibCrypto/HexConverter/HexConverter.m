@@ -30,6 +30,10 @@
 
 + (NSString *)convertToDecimalStringFromHexString:(NSString *)string {
     
+    if ([string hasPrefix:@"0x"] || [string hasPrefix:@"0X"]) {
+        string = [string substringFromIndex:2];
+    }
+    
     const char *ascii = [string cStringUsingEncoding:NSASCIIStringEncoding];
     
     BIGNUM *bn = BN_new();
