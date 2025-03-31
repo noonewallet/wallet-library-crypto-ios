@@ -81,6 +81,7 @@
 		75AAF31E296EFFC600FDC626 /* Data+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF31D296EFFC600FDC626 /* Data+Type.swift */; };
 		75AAF32B296F10A900FDC626 /* String+Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF32A296F10A900FDC626 /* String+Base58.swift */; };
 		75AAF32D296F114A00FDC626 /* Data+Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF32C296F114A00FDC626 /* Data+Base58.swift */; };
+		7B8AEB572D99825E00985A87 /* HDDerivationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8AEB562D99825E00985A87 /* HDDerivationError.swift */; };
 		D53EB7D22BD7DDA000AD6E5A /* Base58RippleTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53EB7D12BD7DDA000AD6E5A /* Base58RippleTestData.swift */; };
 		DA4162222CDD24390044B2EA /* PBKDF2SHA512Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4162212CDD24390044B2EA /* PBKDF2SHA512Tests.swift */; };
 		DA4162242CDD246B0044B2EA /* PBKDF2SHA512.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4162232CDD246B0044B2EA /* PBKDF2SHA512.swift */; };
@@ -177,6 +178,7 @@
 		75AAF32A296F10A900FDC626 /* String+Base58.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Base58.swift"; sourceTree = "<group>"; };
 		75AAF32C296F114A00FDC626 /* Data+Base58.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Base58.swift"; sourceTree = "<group>"; };
 		75F7F27C296C629600DBD91A /* WalletLibCrypto.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = WalletLibCrypto.modulemap; sourceTree = "<group>"; };
+		7B8AEB562D99825E00985A87 /* HDDerivationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDDerivationError.swift; sourceTree = "<group>"; };
 		D53EB7D12BD7DDA000AD6E5A /* Base58RippleTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58RippleTestData.swift; sourceTree = "<group>"; };
 		DA4162212CDD24390044B2EA /* PBKDF2SHA512Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBKDF2SHA512Tests.swift; sourceTree = "<group>"; };
 		DA4162232CDD246B0044B2EA /* PBKDF2SHA512.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBKDF2SHA512.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 			children = (
 				75AAF21D296D9BBB00FDC626 /* HDDerivation.swift */,
 				75AAF21F296DA30D00FDC626 /* HDDerivationEd25519.swift */,
+				7B8AEB562D99825E00985A87 /* HDDerivationError.swift */,
 			);
 			path = HDDerivation;
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				75AAF22F296DAD0700FDC626 /* DataConvertibleProtocol.swift in Sources */,
 				75AAF220296DA30D00FDC626 /* HDDerivationEd25519.swift in Sources */,
 				75AAF204296C792B00FDC626 /* blake2b.c in Sources */,
+				7B8AEB572D99825E00985A87 /* HDDerivationError.swift in Sources */,
 				75AAF229296DAB9B00FDC626 /* Data+HEX.swift in Sources */,
 				75AAF21A296D97A800FDC626 /* KeyEd25519.m in Sources */,
 				75AAF209296C7B6F00FDC626 /* keccak-tiny.c in Sources */,

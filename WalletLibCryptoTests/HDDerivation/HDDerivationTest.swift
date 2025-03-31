@@ -7,12 +7,25 @@
 import XCTest
 @testable import WalletLibCrypto
 
-
 final class HDDerivationTest: XCTestCase {
-    
-    
+    private typealias SUT = HDDerivation
+
     private let DEFAULT_SLIP0132: ([UInt8], [UInt8]) = ([0x04, 0x88, 0xB2, 0x1E], [0x04, 0x88, 0xAD, 0xE4])
-    
+
+    func test_init_fromSeedProducesDeterministicMasterKey() {
+        let mockSeedHex = "1ed7acf97f946c0311de6fd968e62f8b4d1ff17ff883f7672fd9cc9f7308157e4d4ff194cd9536889f37b04c6c9821epP86851b14685fdfa15502e7dd6cf2c"
+        let seed = Data(hex: mockSeedHex)
+
+        let expectedPrivKeyHex = "300b155f751964276c0536230bd9b16fe7a86533c3cbaa7575e8d0431dbedf23"
+        let expectedChainCodeHex = "f9945bb8b052bd0b0802c10c7c852e7765b69b61ce7233d9fe5a35ab108ca3b6"
+
+        let sut: SUT = SUT(seed: seed, slip0132: DEFAULT_SLIP0132)
+        let privKeyData = sut.derived.key.data
+        let chainCodeData = sut.derived.chaincode
+
+        XCTAssertEqual(privKeyData.hex, expectedPrivKeyHex, "Private key doesn't match expected value")
+        XCTAssertEqual(chainCodeData.hex, expectedChainCodeHex, "Chaincode doesn't match expected value")
+    }
 
     func testVectors() {
         
