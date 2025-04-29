@@ -209,11 +209,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B1599722DC1396200747E34 /* WalletLibCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				1B1599732DC139BC00747E34 /* Crypto */,
+				75AAF22D296DACEE00FDC626 /* Extensions */,
+			);
+			path = WalletLibCrypto;
+			sourceTree = "<group>";
+		};
+		1B1599732DC139BC00747E34 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				DAB6C5F02CDD28C200DE2486 /* PBKDF2SHA512 */,
+				75AAF251296DCAE900FDC626 /* Signature */,
+				75AAF214296D936500FDC626 /* HDDerivation */,
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
 		75A13133296C4AAA00DCBD5A = {
 			isa = PBXGroup;
 			children = (
 				1B1599642DC132BB00747E34 /* Package.swift */,
-				75A1313F296C4AAA00DCBD5A /* WalletLibCrypto */,
+				1B1599722DC1396200747E34 /* WalletLibCrypto */,
+				75A1313F296C4AAA00DCBD5A /* WalletLibCryptoC */,
 				75A1314B296C4AAA00DCBD5A /* WalletLibCryptoTests */,
 				75A1313E296C4AAA00DCBD5A /* Products */,
 			);
@@ -228,12 +248,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		75A1313F296C4AAA00DCBD5A /* WalletLibCrypto */ = {
+		75A1313F296C4AAA00DCBD5A /* WalletLibCryptoC */ = {
 			isa = PBXGroup;
 			children = (
 				75AAF256296DD48400FDC626 /* HexConverter */,
 				75AAF238296DC0B300FDC626 /* Scripts */,
-				75AAF22D296DACEE00FDC626 /* Extensions */,
 				75AAF20D296D900800FDC626 /* Encoding */,
 				75AAF200296C78DF00FDC626 /* Hash */,
 				75A1324A296C5BFA00DCBD5A /* OpenSSL */,
@@ -243,7 +262,7 @@
 				75A13141296C4AAA00DCBD5A /* WalletLibCrypto.docc */,
 				75F7F27C296C629600DBD91A /* WalletLibCrypto.modulemap */,
 			);
-			path = WalletLibCrypto;
+			path = WalletLibCryptoC;
 			sourceTree = "<group>";
 		};
 		75A1314B296C4AAA00DCBD5A /* WalletLibCryptoTests */ = {
@@ -311,15 +330,12 @@
 		75A13164296C591200DCBD5A /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
-				75AAF251296DCAE900FDC626 /* Signature */,
-				75AAF214296D936500FDC626 /* HDDerivation */,
 				75AAF20A296D7D9300FDC626 /* Key */,
 				75AAF1FD296C785A00FDC626 /* Ed25519 */,
 				75AAF1D2296C744B00FDC626 /* EdDSA */,
 				75AAF1CF296C656300FDC626 /* Curve */,
 				75A13336296C5FD600DCBD5A /* ECDSA */,
 				75A13161296C58C100DCBD5A /* Bignum */,
-				DAB6C5F02CDD28C200DE2486 /* PBKDF2SHA512 */,
 			);
 			path = Crypto;
 			sourceTree = "<group>";
