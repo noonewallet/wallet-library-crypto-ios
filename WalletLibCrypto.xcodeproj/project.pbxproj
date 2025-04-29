@@ -209,6 +209,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B64FB5E2DC143590028DC13 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				75AAF22D296DACEE00FDC626 /* Extensions */,
+				75AAF251296DCAE900FDC626 /* Signature */,
+				75AAF214296D936500FDC626 /* HDDerivation */,
+				DAB6C5F02CDD28C200DE2486 /* PBKDF2SHA512 */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
 		75A13133296C4AAA00DCBD5A = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +242,7 @@
 		75A1313F296C4AAA00DCBD5A /* WalletLibCrypto */ = {
 			isa = PBXGroup;
 			children = (
+				1B64FB5E2DC143590028DC13 /* Swift */,
 				75AAF256296DD48400FDC626 /* HexConverter */,
 				75AAF238296DC0B300FDC626 /* Scripts */,
 				75AAF20D296D900800FDC626 /* Encoding */,
@@ -241,7 +253,6 @@
 				75A13140296C4AAA00DCBD5A /* WalletLibCrypto.h */,
 				75A13141296C4AAA00DCBD5A /* WalletLibCrypto.docc */,
 				75F7F27C296C629600DBD91A /* WalletLibCrypto.modulemap */,
-				75AAF22D296DACEE00FDC626 /* Extensions */,
 			);
 			path = WalletLibCrypto;
 			sourceTree = "<group>";
@@ -317,9 +328,6 @@
 				75AAF1CF296C656300FDC626 /* Curve */,
 				75A13336296C5FD600DCBD5A /* ECDSA */,
 				75A13161296C58C100DCBD5A /* Bignum */,
-				DAB6C5F02CDD28C200DE2486 /* PBKDF2SHA512 */,
-				75AAF251296DCAE900FDC626 /* Signature */,
-				75AAF214296D936500FDC626 /* HDDerivation */,
 			);
 			path = Crypto;
 			sourceTree = "<group>";
