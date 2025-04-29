@@ -16,12 +16,12 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "libcrypto",
-            path: "WalletLibCryptoC/OpenSSL/libcrypto.xcframework"
+            path: "WalletLibCrypto/OpenSSL/libcrypto.xcframework"
         ),
         .target(
             name: "WalletLibCryptoC",
             dependencies: ["libcrypto"],
-            path: "WalletLibCryptoC",
+            path: "WalletLibCrypto",
             publicHeadersPath: "PrivateHeaders",
             cSettings: [
                 .headerSearchPath("PrivateHeaders"),
@@ -33,7 +33,7 @@ let package = Package(
         ),
         .target(
             name: "WalletLibCrypto",
-            dependencies: ["WalletLibCryptoC", "libcrypto"],
+            dependencies: ["WalletLibCryptoC"],
             path: "WalletLibCrypto",
             exclude: ["Scripts", "OpenSSL"],
             sources: [
