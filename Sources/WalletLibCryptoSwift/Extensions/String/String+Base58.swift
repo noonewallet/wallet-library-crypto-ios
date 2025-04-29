@@ -5,8 +5,7 @@
 //
 
 import Foundation
-import WalletLibCrypto.Base58
-
+import WalletLibCrypto
 
 public extension String {
     

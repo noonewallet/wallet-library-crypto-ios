@@ -1,0 +1,58 @@
+framework module WalletLibCrypto {
+    umbrella header "WalletLibCrypto.h"
+    
+    export *
+    module * { export * }
+    
+    explicit module Bignum {
+        header "../PrivateHeaders/Bignum.h"
+    }
+    
+    explicit module HexConverter {
+        header "../PrivateHeaders/HexConverter.h"
+    }
+    
+    explicit module EcCurve {
+        header "../PrivateHeaders/Curve.h"
+    }
+    
+    explicit module ECDSA {
+        header "../PrivateHeaders/ECDSA.h"
+    }
+    
+    explicit module EdDSA {
+        header "../PrivateHeaders/EdDSA.h"
+    }
+
+    explicit module KeySecp256k1 {
+        header "../PrivateHeaders/KeyType.h"
+        header "../PrivateHeaders/KeySecp256k1.h"
+    }
+    
+    explicit module KeyEd25519 {
+        header "../PrivateHeaders/KeyType.h"
+        header "../PrivateHeaders/KeyEd25519.h"
+    }
+    
+    explicit module KeyTweetNacl {
+        header "../PrivateHeaders/KeyType.h"
+        header "../PrivateHeaders/KeyTweetNacl.h"
+    }
+    
+    explicit module Base58 {
+        header "../PrivateHeaders/Base58.h"
+    }
+    
+    explicit module Bech32 {
+        header "../PrivateHeaders/Bech32.h"
+    }
+    
+    explicit module Hash {
+        header "../PrivateHeaders/Hash.h"
+    }
+    
+    explicit module Keccak {
+        header "../PrivateHeaders/keccak-tiny.h"
+    }
+}
+

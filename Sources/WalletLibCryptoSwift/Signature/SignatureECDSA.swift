@@ -5,8 +5,7 @@
 //
 
 import Foundation
-import WalletLibCrypto.ECDSA
-
+import WalletLibCrypto
 
 public struct SignatureECDSA {
 

@@ -5,9 +5,9 @@
 //
 
 import Foundation
-import WalletLibCrypto.KeySecp256k1
-import WalletLibCrypto.Base58
 import CommonCrypto
+import WalletLibCrypto
+
 
 /// HDDerivation allows you to generate keys in accordance with the standard described in
 /// https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki

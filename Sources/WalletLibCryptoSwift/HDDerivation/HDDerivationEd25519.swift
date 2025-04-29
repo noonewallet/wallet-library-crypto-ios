@@ -5,9 +5,8 @@
 //
 
 import Foundation
-import WalletLibCrypto.KeyEd25519
 import CommonCrypto
-
+import WalletLibCrypto
 
 public class HDDerivationEd25519 {
     

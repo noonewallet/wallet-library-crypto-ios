@@ -2,39 +2,35 @@
 import PackageDescription
 
 let package = Package(
-    name: "WalletLibCrypto",
+    name: "WalletLibCryptoSwift",
     platforms: [
         .iOS(.v13),
         .macOS(.v10_15)
     ],
     products: [
         .library(
-            name: "WalletLibCrypto",
-            targets: ["WalletLibCrypto"]
+            name: "WalletLibCryptoSwift",
+            targets: ["WalletLibCryptoSwift"]
         )
     ],
     targets: [
         .binaryTarget(
             name: "libcrypto",
-            path: "WalletLibCrypto/OpenSSL/libcrypto.xcframework"
-        ),
-        .target(
-            name: "WalletLibCryptoC",
-            dependencies: ["libcrypto"],
-            path: "WalletLibCrypto/C",
-            publicHeadersPath: "PrivateHeaders",
-            cSettings: [
-                .headerSearchPath("PrivateHeaders"),
-                .headerSearchPath("Hash/Keccak"),
-                .headerSearchPath("Hash/Blake2b"),
-                .headerSearchPath("Ed25519"),
-                .headerSearchPath("EdDSA")
-            ]
+            path: "Sources/OpenSSL/libcrypto.xcframework"
         ),
         .target(
             name: "WalletLibCrypto",
-            dependencies: ["WalletLibCryptoC"],
-            path: "WalletLibCrypto/Swift"
+            dependencies: ["libcrypto"],
+            path: "Sources/WalletLibCrypto",
+            publicHeadersPath: "PublicHeaders",
+            cSettings: [
+                .headerSearchPath("PrivateHeaders")
+            ]
+        ),
+        .target(
+            name: "WalletLibCryptoSwift",
+            dependencies: ["WalletLibCrypto"],
+            path: "Sources/WalletLibCryptoSwift"
         ),
         .testTarget(
             name: "WalletLibCryptoTests",

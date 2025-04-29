@@ -5,7 +5,7 @@
 //
 
 import Foundation
-
+import WalletLibCrypto
 
 public extension Data {
     

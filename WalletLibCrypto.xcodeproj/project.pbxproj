@@ -55,8 +55,6 @@
 		75AAF218296D953400FDC626 /* KeyEd25519.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AAF217296D952E00FDC626 /* KeyEd25519.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		75AAF21A296D97A800FDC626 /* KeyEd25519.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF219296D97A800FDC626 /* KeyEd25519.m */; };
 		75AAF21C296D99B300FDC626 /* KeyType.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AAF21B296D997700FDC626 /* KeyType.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		75AAF21E296D9BBB00FDC626 /* HDDerivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF21D296D9BBB00FDC626 /* HDDerivation.swift */; };
-		75AAF220296DA30D00FDC626 /* HDDerivationEd25519.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF21F296DA30D00FDC626 /* HDDerivationEd25519.swift */; };
 		75AAF222296DA80200FDC626 /* KeySecp256k1Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF221296DA80200FDC626 /* KeySecp256k1Test.swift */; };
 		75AAF224296DA91900FDC626 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF223296DA91900FDC626 /* TestData.swift */; };
 		75AAF226296DA9DF00FDC626 /* KeySecp256k1TestVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF225296DA9DF00FDC626 /* KeySecp256k1TestVector.swift */; };
@@ -73,18 +71,11 @@
 		75AAF245296DC8C600FDC626 /* Base58Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF244296DC8C600FDC626 /* Base58Test.swift */; };
 		75AAF249296DC9BB00FDC626 /* Base58testExpected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF248296DC9BB00FDC626 /* Base58testExpected.swift */; };
 		75AAF24E296DCA5100FDC626 /* ECDSATest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF24D296DCA5100FDC626 /* ECDSATest.swift */; };
-		75AAF253296DCAFD00FDC626 /* SignatureECDSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF252296DCAFD00FDC626 /* SignatureECDSA.swift */; };
-		75AAF255296DD40A00FDC626 /* SignatureEdDSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF254296DD40A00FDC626 /* SignatureEdDSA.swift */; };
 		75AAF258296DD4AF00FDC626 /* HexConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF257296DD4AF00FDC626 /* HexConverter.m */; };
-		75AAF2F6296EE3FF00FDC626 /* Data+Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF2F5296EE3FF00FDC626 /* Data+Hash.swift */; };
-		75AAF2F8296EE42400FDC626 /* String+Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF2F7296EE42400FDC626 /* String+Hash.swift */; };
 		75AAF31E296EFFC600FDC626 /* Data+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF31D296EFFC600FDC626 /* Data+Type.swift */; };
-		75AAF32B296F10A900FDC626 /* String+Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF32A296F10A900FDC626 /* String+Base58.swift */; };
-		75AAF32D296F114A00FDC626 /* Data+Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAF32C296F114A00FDC626 /* Data+Base58.swift */; };
 		7B8AEB572D99825E00985A87 /* HDDerivationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8AEB562D99825E00985A87 /* HDDerivationError.swift */; };
 		D53EB7D22BD7DDA000AD6E5A /* Base58RippleTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53EB7D12BD7DDA000AD6E5A /* Base58RippleTestData.swift */; };
 		DA4162222CDD24390044B2EA /* PBKDF2SHA512Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4162212CDD24390044B2EA /* PBKDF2SHA512Tests.swift */; };
-		DA4162242CDD246B0044B2EA /* PBKDF2SHA512.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4162232CDD246B0044B2EA /* PBKDF2SHA512.swift */; };
 		DA52E4ED2CB5D1DD00B951DC /* libcrypto.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA52E4EC2CB5D1DD00B951DC /* libcrypto.xcframework */; };
 		F95B2FA02C413AF30092D231 /* KeyTweetNacl.m in Sources */ = {isa = PBXBuildFile; fileRef = F95B2F9F2C413AF30092D231 /* KeyTweetNacl.m */; };
 		F95B2FA42C414FE60092D231 /* EdDSATest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95B2FA32C414FE60092D231 /* EdDSATest.swift */; };
@@ -209,7 +200,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1B64FB5E2DC143590028DC13 /* Swift */ = {
+		1B64FB5E2DC143590028DC13 /* WalletLibCryptoSwift */ = {
 			isa = PBXGroup;
 			children = (
 				75AAF22D296DACEE00FDC626 /* Extensions */,
@@ -217,27 +208,33 @@
 				75AAF214296D936500FDC626 /* HDDerivation */,
 				DAB6C5F02CDD28C200DE2486 /* PBKDF2SHA512 */,
 			);
-			path = Swift;
+			path = WalletLibCryptoSwift;
 			sourceTree = "<group>";
 		};
-		1BD2E69A2DC145DE008B17C5 /* C */ = {
+		1BC20A9B2DC16B800003071A /* PublicHeaders */ = {
 			isa = PBXGroup;
 			children = (
-				75AAF256296DD48400FDC626 /* HexConverter */,
-				75AAF238296DC0B300FDC626 /* Scripts */,
-				75AAF20D296D900800FDC626 /* Encoding */,
-				75AAF200296C78DF00FDC626 /* Hash */,
-				75A13164296C591200DCBD5A /* Crypto */,
-				75A13157296C4C2E00DCBD5A /* PrivateHeaders */,
+				75A13140296C4AAA00DCBD5A /* WalletLibCrypto.h */,
+				75F7F27C296C629600DBD91A /* WalletLibCrypto.modulemap */,
 			);
-			path = C;
+			path = PublicHeaders;
+			sourceTree = "<group>";
+		};
+		1BD2E6C12DC16903008B17C5 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				75A1313F296C4AAA00DCBD5A /* WalletLibCrypto */,
+				1B64FB5E2DC143590028DC13 /* WalletLibCryptoSwift */,
+				75A1324A296C5BFA00DCBD5A /* OpenSSL */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		75A13133296C4AAA00DCBD5A = {
 			isa = PBXGroup;
 			children = (
 				1B1599642DC132BB00747E34 /* Package.swift */,
-				75A1313F296C4AAA00DCBD5A /* WalletLibCrypto */,
+				1BD2E6C12DC16903008B17C5 /* Sources */,
 				75A1314B296C4AAA00DCBD5A /* WalletLibCryptoTests */,
 				75A1313E296C4AAA00DCBD5A /* Products */,
 			);
@@ -255,12 +252,14 @@
 		75A1313F296C4AAA00DCBD5A /* WalletLibCrypto */ = {
 			isa = PBXGroup;
 			children = (
-				1BD2E69A2DC145DE008B17C5 /* C */,
-				1B64FB5E2DC143590028DC13 /* Swift */,
-				75A13140296C4AAA00DCBD5A /* WalletLibCrypto.h */,
+				1BC20A9B2DC16B800003071A /* PublicHeaders */,
+				75AAF256296DD48400FDC626 /* HexConverter */,
+				75AAF238296DC0B300FDC626 /* Scripts */,
+				75AAF20D296D900800FDC626 /* Encoding */,
+				75AAF200296C78DF00FDC626 /* Hash */,
+				75A13164296C591200DCBD5A /* Crypto */,
+				75A13157296C4C2E00DCBD5A /* PrivateHeaders */,
 				75A13141296C4AAA00DCBD5A /* WalletLibCrypto.docc */,
-				75F7F27C296C629600DBD91A /* WalletLibCrypto.modulemap */,
-				75A1324A296C5BFA00DCBD5A /* OpenSSL */,
 			);
 			path = WalletLibCrypto;
 			sourceTree = "<group>";
@@ -733,11 +732,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75AAF2F6296EE3FF00FDC626 /* Data+Hash.swift in Sources */,
 				75A13338296C5FFE00DCBD5A /* ECDSA.m in Sources */,
-				75AAF253296DCAFD00FDC626 /* SignatureECDSA.swift in Sources */,
 				75AAF22F296DAD0700FDC626 /* DataConvertibleProtocol.swift in Sources */,
-				75AAF220296DA30D00FDC626 /* HDDerivationEd25519.swift in Sources */,
 				75AAF204296C792B00FDC626 /* blake2b.c in Sources */,
 				7B8AEB572D99825E00985A87 /* HDDerivationError.swift in Sources */,
 				75AAF229296DAB9B00FDC626 /* Data+HEX.swift in Sources */,
@@ -745,23 +741,17 @@
 				75AAF209296C7B6F00FDC626 /* keccak-tiny.c in Sources */,
 				75AAF1D4296C745E00FDC626 /* EdDSA.m in Sources */,
 				75A13142296C4AAA00DCBD5A /* WalletLibCrypto.docc in Sources */,
-				75AAF21E296D9BBB00FDC626 /* HDDerivation.swift in Sources */,
 				75AAF237296DAE6600FDC626 /* Numeric+Data.swift in Sources */,
 				75A13163296C58EA00DCBD5A /* Bignum.m in Sources */,
 				75AAF213296D91B400FDC626 /* Bech32.m in Sources */,
 				75AAF258296DD4AF00FDC626 /* HexConverter.m in Sources */,
 				F95B2FA02C413AF30092D231 /* KeyTweetNacl.m in Sources */,
-				75AAF32B296F10A900FDC626 /* String+Base58.swift in Sources */,
-				75AAF2F8296EE42400FDC626 /* String+Hash.swift in Sources */,
 				75AAF206296C79E200FDC626 /* Hash.m in Sources */,
-				75AAF32D296F114A00FDC626 /* Data+Base58.swift in Sources */,
 				75AAF232296DAD8E00FDC626 /* String+Type.swift in Sources */,
 				75AAF1D1296C657600FDC626 /* Curve.m in Sources */,
 				75AAF1FF296C789400FDC626 /* ed25519.c in Sources */,
-				DA4162242CDD246B0044B2EA /* PBKDF2SHA512.swift in Sources */,
 				75AAF22C296DAC7F00FDC626 /* String+Data.swift in Sources */,
 				75AAF20C296D7DEA00FDC626 /* KeySecp256k1.m in Sources */,
-				75AAF255296DD40A00FDC626 /* SignatureEdDSA.swift in Sources */,
 				75AAF234296DADBD00FDC626 /* String+Components.swift in Sources */,
 				759435AF2B1796A200895099 /* TweetNacl.c in Sources */,
 				75AAF31E296EFFC600FDC626 /* Data+Type.swift in Sources */,
@@ -945,7 +935,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.0;
-				MODULEMAP_FILE = WalletLibCrypto/WalletLibCrypto.modulemap;
+				MODULEMAP_FILE = Sources/WalletLibCrypto/PublicHeaders/WalletLibCrypto.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wallet-lib-crypto.WalletLibCrypto";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -979,7 +969,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.0;
-				MODULEMAP_FILE = WalletLibCrypto/WalletLibCrypto.modulemap;
+				MODULEMAP_FILE = Sources/WalletLibCrypto/PublicHeaders/WalletLibCrypto.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wallet-lib-crypto.WalletLibCrypto";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

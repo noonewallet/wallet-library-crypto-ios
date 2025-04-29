@@ -5,6 +5,7 @@
 //
 
 import CommonCrypto
+import WalletLibCrypto
 
 public enum PBKDF2SHA512 {
     private static let iterations: UInt32 = 2048

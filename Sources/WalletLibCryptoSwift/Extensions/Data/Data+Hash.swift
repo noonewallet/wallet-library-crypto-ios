@@ -5,8 +5,7 @@
 //
 
 import Foundation
-import WalletLibCrypto.Hash
-
+import WalletLibCrypto
 
 public extension Data {
     
