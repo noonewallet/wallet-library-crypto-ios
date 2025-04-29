@@ -102,6 +102,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B1599642DC132BB00747E34 /* Package.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift.swift; sourceTree = "<group>"; };
 		759435AD2B17968700895099 /* TweetNacl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetNacl.h; sourceTree = "<group>"; };
 		759435AE2B1796A200895099 /* TweetNacl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TweetNacl.c; sourceTree = "<group>"; };
 		75A1313D296C4AAA00DCBD5A /* WalletLibCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WalletLibCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,6 +212,7 @@
 		75A13133296C4AAA00DCBD5A = {
 			isa = PBXGroup;
 			children = (
+				1B1599642DC132BB00747E34 /* Package.swift.swift */,
 				75A1313F296C4AAA00DCBD5A /* WalletLibCrypto */,
 				75A1314B296C4AAA00DCBD5A /* WalletLibCryptoTests */,
 				75A1313E296C4AAA00DCBD5A /* Products */,
