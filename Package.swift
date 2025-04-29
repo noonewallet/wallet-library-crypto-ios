@@ -35,12 +35,19 @@ let package = Package(
             name: "WalletLibCrypto",
             dependencies: ["WalletLibCryptoC"],
             path: "WalletLibCrypto",
-            exclude: ["Scripts", "OpenSSL"],
-            sources: [
-                "Extensions",
-                "Crypto/PBKDF2SHA512",
-                "Crypto/Signature",
-                "Crypto/HDDerivation"
+            exclude: [
+                "HexConverter",
+                "Scripts",
+                "Encoding",
+                "Hash",
+                "OpenSSL",
+                "Crypto/Key",
+                "Crypto/Ed25519",
+                "Crypto/EdDSA",
+                "Crypto/Curve",
+                "Crypto/ECDSA",
+                "Crypto/Bignum",
+                "PrivateHeaders"
             ]
         ),
         .testTarget(
