@@ -21,7 +21,7 @@ let package = Package(
         .target(
             name: "WalletLibCryptoC",
             dependencies: ["libcrypto"],
-            path: "WalletLibCrypto",
+            path: "WalletLibCrypto/C",
             publicHeadersPath: "PrivateHeaders",
             cSettings: [
                 .headerSearchPath("PrivateHeaders"),
