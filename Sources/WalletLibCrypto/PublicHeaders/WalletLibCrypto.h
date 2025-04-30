@@ -17,6 +17,7 @@
 #import "KeyEd25519.h"
 #import "KeyTweetNacl.h"
 #import "keccak-tiny.h"
+#import "HexConverter.h"
 
 //! Project version number for WalletLibCrypto.
 FOUNDATION_EXPORT double WalletLibCryptoVersionNumber;
